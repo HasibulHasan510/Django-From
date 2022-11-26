@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Creative IT</title>
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'img/logo-1.png' %}" type="image/x-icon">
+  </head>
+  <body>
+    <div class="center">
+      <div class="left">
+        <img src="{% static 'img/background-1.jpg' %}" alt="" srcset="">
+        <div class="left-child">
+          <h1>Student Login Form</h1>
+          <h5>Please use your credentials to login.</h5>
+        </div>
+      </div>
+
+      <div class="right">
+        <img src="{% static 'img/logo-2.png' %}" alt="">
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            {% if error1 %}
+            <div class="col-12 txt_field alert">
+              <p>Password Didn't Match!</p>
+            </div>
+            {% endif %}
+            <p>Login</p>
+            <div class="txt_field">
+                <input type="text" name="username" required>
+                <span>Username</span>
+            </div>
+            <div class="txt_field">
+                <input type="password" name="password" required>
+                <span>Password</span>
+            </div>
+
+            <div class="signup_login">
+                <a href="{% url 'registration' %}">I have no account.</a>
+                <input type="submit" value="LOGIN">
+            </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
